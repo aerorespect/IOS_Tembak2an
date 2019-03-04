@@ -21,6 +21,7 @@
 		90E4DAE0222D875F009FC0D2 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E4DADF222D875E009FC0D2 /* MainMenuScene.swift */; };
 		90E4DAE3222D929F009FC0D2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E4DAE2222D929E009FC0D2 /* AVFoundation.framework */; };
 		90E4DAE5222D93B3009FC0D2 /* TipsyPrimadonna.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DAE4222D93B3009FC0D2 /* TipsyPrimadonna.wav */; };
+		90E4DAE7222DA303009FC0D2 /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DAE6222DA302009FC0D2 /* rocket.png */; };
 		90EEF206222A05CF00762E7C /* LaserSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90EEF205222A05CE00762E7C /* LaserSound.wav */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		90E4DADF222D875E009FC0D2 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		90E4DAE2222D929E009FC0D2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		90E4DAE4222D93B3009FC0D2 /* TipsyPrimadonna.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TipsyPrimadonna.wav; sourceTree = "<group>"; };
+		90E4DAE6222DA302009FC0D2 /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
 		90EEF205222A05CE00762E7C /* LaserSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LaserSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				90E4DAE4222D93B3009FC0D2 /* TipsyPrimadonna.wav */,
 				90E4DAD9222B639C009FC0D2 /* Explosion.wav */,
 				903C3A2B2229D7C60036789D /* Info.plist */,
+				90E4DAE6222DA302009FC0D2 /* rocket.png */,
 			);
 			path = ColorSwitch;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				903C3A252229D7C00036789D /* Main.storyboard in Resources */,
 				90E4DADC222B65AF009FC0D2 /* theBoldFont.ttf in Resources */,
 				903C3A272229D7C60036789D /* Assets.xcassets in Resources */,
+				90E4DAE7222DA303009FC0D2 /* rocket.png in Resources */,
 				90E4DADA222B639D009FC0D2 /* Explosion.wav in Resources */,
 				903C3A2A2229D7C60036789D /* LaunchScreen.storyboard in Resources */,
 			);
