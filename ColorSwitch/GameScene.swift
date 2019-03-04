@@ -8,10 +8,11 @@
 
 import SpriteKit
 
+var gameScore = 0
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
     
-    var gameScore = 0
+
     let scoreLabel = SKLabelNode(fontNamed: "The Bold Font")
     
     var livesNumber = 10
@@ -65,6 +66,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
+        gameScore = 0
         
         self.physicsWorld.contactDelegate = self
         
@@ -144,8 +147,20 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             enemy.removeAllActions()
         })
         
-            
+        let changeSceneAction = SKAction.run(changeScene)
+        let waitToChangeScene = SKAction.wait(forDuration: 1)
+        let changeSceneSequence = SKAction.sequence([waitToChangeScene, changeSceneAction])
+        self.run(changeSceneSequence)
         
+        
+    }
+    
+    func changeScene(){
+      
+        let sceneToMoveTo = GameOverScene(size: self.size)
+        sceneToMoveTo.scaleMode = self.scaleMode
+        let myTransition = SKTransition.fade(withDuration: 0.5)
+        self.view!.presentScene(sceneToMoveTo, transition: myTransition)
         
         
     }

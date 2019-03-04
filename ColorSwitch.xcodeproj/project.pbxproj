@@ -17,6 +17,7 @@
 		903C3A402229D7C60036789D /* ColorSwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C3A3F2229D7C60036789D /* ColorSwitchUITests.swift */; };
 		90E4DADA222B639D009FC0D2 /* Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DAD9222B639C009FC0D2 /* Explosion.wav */; };
 		90E4DADC222B65AF009FC0D2 /* theBoldFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DADB222B65AF009FC0D2 /* theBoldFont.ttf */; };
+		90E4DADE222D4D86009FC0D2 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E4DADD222D4D85009FC0D2 /* GameOverScene.swift */; };
 		90EEF206222A05CF00762E7C /* LaserSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90EEF205222A05CE00762E7C /* LaserSound.wav */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		903C3A412229D7C60036789D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90E4DAD9222B639C009FC0D2 /* Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Explosion.wav; sourceTree = "<group>"; };
 		90E4DADB222B65AF009FC0D2 /* theBoldFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = theBoldFont.ttf; sourceTree = "<group>"; };
+		90E4DADD222D4D85009FC0D2 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		90EEF205222A05CE00762E7C /* LaserSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LaserSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 			children = (
 				903C3A192229D7BF0036789D /* AppDelegate.swift */,
 				903C3A1F2229D7C00036789D /* GameScene.swift */,
+				90E4DADD222D4D85009FC0D2 /* GameOverScene.swift */,
 				903C3A212229D7C00036789D /* GameViewController.swift */,
 				903C3A232229D7C00036789D /* Main.storyboard */,
 				90EEF205222A05CE00762E7C /* LaserSound.wav */,
@@ -273,6 +276,7 @@
 			files = (
 				903C3A202229D7C00036789D /* GameScene.swift in Sources */,
 				903C3A222229D7C00036789D /* GameViewController.swift in Sources */,
+				90E4DADE222D4D86009FC0D2 /* GameOverScene.swift in Sources */,
 				903C3A1A2229D7BF0036789D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
