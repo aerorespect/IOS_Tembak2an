@@ -362,7 +362,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         enemy.physicsBody!.contactTestBitMask = PhysicsCategories.Player | PhysicsCategories.Bullet
         self.addChild(enemy)
         
-        let moveEnemy = SKAction.move(to: endPoint, duration: 2 )
+        let moveEnemy = SKAction.move(to: endPoint, duration: 3 )
         let deleteEnemy = SKAction.removeFromParent()
         let loseALifeAction = SKAction.run(loseALife)
         let enemySequence = SKAction.sequence([moveEnemy, deleteEnemy, loseALifeAction])
