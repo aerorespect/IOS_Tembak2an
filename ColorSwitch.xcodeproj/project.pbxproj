@@ -18,6 +18,9 @@
 		90E4DADA222B639D009FC0D2 /* Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DAD9222B639C009FC0D2 /* Explosion.wav */; };
 		90E4DADC222B65AF009FC0D2 /* theBoldFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DADB222B65AF009FC0D2 /* theBoldFont.ttf */; };
 		90E4DADE222D4D86009FC0D2 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E4DADD222D4D85009FC0D2 /* GameOverScene.swift */; };
+		90E4DAE0222D875F009FC0D2 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E4DADF222D875E009FC0D2 /* MainMenuScene.swift */; };
+		90E4DAE3222D929F009FC0D2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E4DAE2222D929E009FC0D2 /* AVFoundation.framework */; };
+		90E4DAE5222D93B3009FC0D2 /* TipsyPrimadonna.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90E4DAE4222D93B3009FC0D2 /* TipsyPrimadonna.wav */; };
 		90EEF206222A05CF00762E7C /* LaserSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90EEF205222A05CE00762E7C /* LaserSound.wav */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		90E4DAD9222B639C009FC0D2 /* Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Explosion.wav; sourceTree = "<group>"; };
 		90E4DADB222B65AF009FC0D2 /* theBoldFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = theBoldFont.ttf; sourceTree = "<group>"; };
 		90E4DADD222D4D85009FC0D2 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		90E4DADF222D875E009FC0D2 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		90E4DAE2222D929E009FC0D2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		90E4DAE4222D93B3009FC0D2 /* TipsyPrimadonna.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TipsyPrimadonna.wav; sourceTree = "<group>"; };
 		90EEF205222A05CE00762E7C /* LaserSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LaserSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E4DAE3222D929F009FC0D2 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +98,7 @@
 				903C3A332229D7C60036789D /* ColorSwitchTests */,
 				903C3A3E2229D7C60036789D /* ColorSwitchUITests */,
 				903C3A172229D7BF0036789D /* Products */,
+				90E4DAE1222D929C009FC0D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +117,7 @@
 			children = (
 				903C3A192229D7BF0036789D /* AppDelegate.swift */,
 				903C3A1F2229D7C00036789D /* GameScene.swift */,
+				90E4DADF222D875E009FC0D2 /* MainMenuScene.swift */,
 				90E4DADD222D4D85009FC0D2 /* GameOverScene.swift */,
 				903C3A212229D7C00036789D /* GameViewController.swift */,
 				903C3A232229D7C00036789D /* Main.storyboard */,
@@ -116,6 +125,7 @@
 				903C3A262229D7C60036789D /* Assets.xcassets */,
 				903C3A282229D7C60036789D /* LaunchScreen.storyboard */,
 				90E4DADB222B65AF009FC0D2 /* theBoldFont.ttf */,
+				90E4DAE4222D93B3009FC0D2 /* TipsyPrimadonna.wav */,
 				90E4DAD9222B639C009FC0D2 /* Explosion.wav */,
 				903C3A2B2229D7C60036789D /* Info.plist */,
 			);
@@ -138,6 +148,14 @@
 				903C3A412229D7C60036789D /* Info.plist */,
 			);
 			path = ColorSwitchUITests;
+			sourceTree = "<group>";
+		};
+		90E4DAE1222D929C009FC0D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90E4DAE2222D929E009FC0D2 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90EEF206222A05CF00762E7C /* LaserSound.wav in Resources */,
+				90E4DAE5222D93B3009FC0D2 /* TipsyPrimadonna.wav in Resources */,
 				903C3A252229D7C00036789D /* Main.storyboard in Resources */,
 				90E4DADC222B65AF009FC0D2 /* theBoldFont.ttf in Resources */,
 				903C3A272229D7C60036789D /* Assets.xcassets in Resources */,
@@ -274,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E4DAE0222D875F009FC0D2 /* MainMenuScene.swift in Sources */,
 				903C3A202229D7C00036789D /* GameScene.swift in Sources */,
 				903C3A222229D7C00036789D /* GameViewController.swift in Sources */,
 				90E4DADE222D4D86009FC0D2 /* GameOverScene.swift in Sources */,
