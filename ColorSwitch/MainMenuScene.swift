@@ -53,6 +53,7 @@ class MainMenuScene : SKScene {
         self.addChild(startGame)
         
         
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

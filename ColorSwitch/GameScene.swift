@@ -10,17 +10,20 @@ import SpriteKit
 
 var gameScore = 0
 
-class GameScene: SKScene,SKPhysicsContactDelegate {
-    
+
+class GameScene: SKScene,SKPhysicsContactDelegate{
 
     let tapToStartNewLabel = SKLabelNode(fontNamed: "The Bold Font")
     
     let scoreLabel = SKLabelNode(fontNamed: "The Bold Font")
     
-    var livesNumber = 10
+    var livesNumber = 3
     let livesLabel = SKLabelNode(fontNamed: "The Bold Font")
     
+    let pauseLabel = SKLabelNode(fontNamed: "The Bold Font")
+    
     var levelNumber = 0
+    
     
     let player = SKSpriteNode(imageNamed: "playerShip")
     let bulletSound = SKAction.playSoundFileNamed("LaserSound.wav", waitForCompletion: false)
@@ -30,11 +33,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         case preGame   //state before game begin
         case inGame   // in game state
         case afterGame  // after game state
+        case pauseGame // pause game state
         
     }
     
     
     var currentGameState = gameState.preGame
+    
     
     struct PhysicsCategories {
         static let None : UInt32 = 0
@@ -104,17 +109,27 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         scoreLabel.zPosition = 100
         self.addChild(scoreLabel)
         
-        livesLabel.text = "Lives : 10"
+        livesLabel.text = "Lives : 3"
         livesLabel.fontSize = 70
         livesLabel.fontColor = SKColor.white
         livesLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right
         livesLabel.position = CGPoint(x: self.size.width*0.85, y: self.size.height+livesLabel.frame.height)
         livesLabel.zPosition = 100
         self.addChild(livesLabel)
+ 
+        pauseLabel.text = "Pause"
+        pauseLabel.fontSize = 70
+        pauseLabel.fontColor = SKColor.white
+        pauseLabel.position = CGPoint(x: self.size.width/2, y: self.size.height + pauseLabel.frame.height)
+        pauseLabel.zPosition = 100
+        pauseLabel.name = "pauseButton"
+        self.addChild(pauseLabel)
         
         let moveToScreenAction = SKAction.moveTo(y: self.size.height*0.9, duration: 0.5)
         scoreLabel.run(moveToScreenAction)
         livesLabel.run(moveToScreenAction)
+        pauseLabel.run(moveToScreenAction)
+
         
         
         tapToStartNewLabel.text = "Tap to Begin"
@@ -127,6 +142,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
         tapToStartNewLabel.run(fadeInAction)
+
+        
         
         
     }
@@ -160,6 +177,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     
     func startGame(){
+        
         currentGameState = gameState.inGame
         
         let fadeOutAction = SKAction.fadeIn(withDuration: 0.5)
@@ -196,7 +214,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         gameScore += 1
         scoreLabel.text = "Score : \(gameScore)"
         
-        if gameScore == 10 || gameScore == 25 || gameScore == 50 {
+        if gameScore == 5 || gameScore == 10 || gameScore == 15 {
             startNewLevel()
         }
         
@@ -233,6 +251,51 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
     }
     
+    func pauseScene(){
+        currentGameState = gameState.pauseGame
+        
+        pauseLabel.text = "Resume"
+        self.isPaused = true
+        self.speed = 0
+
+        //self.removeAllActions()
+        
+        self.enumerateChildNodes(withName: "Bullet", using: {bullet, stop in
+            bullet.isPaused = true
+            bullet.speed = 0
+
+        })
+        
+        self.enumerateChildNodes(withName: "Enemy", using: {enemy, stop in
+            enemy.isPaused = true
+            enemy.speed = 0
+
+        })
+        
+    }
+    func resumeScene(){
+        currentGameState = gameState.inGame
+        pauseLabel.text = "Pause"
+        self.isPaused = false
+        self.speed = 1
+        
+        
+        
+        self.enumerateChildNodes(withName: "Bullet", using: {bullet, stop in
+            bullet.isPaused = false
+            bullet.speed = 1
+
+        })
+        
+        self.enumerateChildNodes(withName: "Enemy", using: {enemy, stop in
+            enemy.isPaused = false
+            enemy.speed = 1
+        })
+        //levelNumber -= 1
+        //startNewLevel()
+        
+        
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         var body1 = SKPhysicsBody()
@@ -319,6 +382,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let spawnForever = SKAction.repeatForever(spawnSequence)
         self.run(spawnForever, withKey: "spawningEnemies")
         
+        let spawnBullet = SKAction.run(fireBullet)
+        let waitToSpawnBullet = SKAction.wait(forDuration: levelDuration/4)
+        let spawnBulletSequence = SKAction.sequence([waitToSpawnBullet, spawnBullet])
+        let spawnBulletForever = SKAction.repeatForever(spawnBulletSequence)
+        self.run(spawnBulletForever, withKey: "spawningBullet")
+        
     }
     
     
@@ -338,7 +407,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let moveBullet = SKAction.moveTo(y: self.size.height + bullet.size.height, duration: 1)
         let deleteBullet = SKAction.removeFromParent()
         let bulletSequence = SKAction.sequence([bulletSound, moveBullet, deleteBullet])
-        bullet.run(bulletSequence)
+        
+        if currentGameState == gameState.inGame{
+            bullet.run(bulletSequence)
+        }
+
         
     }
     
@@ -349,6 +422,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         let startPoint = CGPoint(x: randomXStart, y: self.size.height*1.2)
         let endPoint = CGPoint(x: randomXEnd, y:-self.size.height*0.2)
+        
+        
         
         let enemy = SKSpriteNode(imageNamed: "enemyShip")
         enemy.name = "Enemy"
@@ -386,9 +461,22 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             startGame()
         }
         else if currentGameState == gameState.inGame{
-        fireBullet()
+            for touch: AnyObject in touches{
+                let pointOfTouch = touch.location(in: self)
+                let nodeITapped = atPoint(pointOfTouch)
+                
+                if nodeITapped.name == "pauseButton"{
+                    pauseScene()
+                    
+                    
+                }
+                
+                
+            }
         }
-        
+        else if currentGameState == gameState.pauseGame{
+            resumeScene()
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
